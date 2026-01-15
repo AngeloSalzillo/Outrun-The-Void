@@ -54,7 +54,7 @@ This project is being developed as a **personal portfolio project** with an emph
 ---
 
 ## Project Status
-🔧 **In progress**  
+**In progress**  
 The project is actively being developed, with ongoing improvements to gameplay depth, polish, and visual feedback.
 
 ---
