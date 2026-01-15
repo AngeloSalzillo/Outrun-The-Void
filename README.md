@@ -1,9 +1,9 @@
 # 🎮 Outrun The Void
 
-**Outrun The Void** is an infinite 3D runner game developed in **Unity**, focused on fast-paced movement, increasing challenge, and modular gameplay systems.  
+**Outrun The Void** is an infinite 3D runner game developed in Unity, focused on fast-paced movement, increasing challenge, and modular gameplay systems.  
 The player controls a cube that must run, jump, and react to dynamically evolving obstacles while avoiding falling into the void.
 
-This project is being developed as a **personal portfolio project** with an emphasis on clean architecture, scalability, and real-time gameplay mechanics.
+This project is being developed as a personal portfolio project with an emphasis on clean architecture, scalability, and real-time gameplay mechanics.
 
 ---
 
