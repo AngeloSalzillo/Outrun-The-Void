@@ -17,7 +17,7 @@ This project is being developed as a personal portfolio project with an emphasis
   - Jump and double jump mechanics  
 - The game continues indefinitely until the player fails
 
-![Short gameplay demo](Images/short_demo.gif)
+![Short gameplay demo](Images/IMG_1372.gif)
 
 ---
 
