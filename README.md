@@ -5,6 +5,9 @@ The player controls a cube that must run, jump, and react to dynamically evolvin
 
 This project is being developed as a personal portfolio project with an emphasis on clean architecture, scalability, and real-time gameplay mechanics.
 
+
+![Gameplay collage](Images/collage.png)
+
 ---
 
 ## Core Gameplay
