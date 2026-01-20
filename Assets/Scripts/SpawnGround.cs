@@ -3,9 +3,12 @@ public class SpawnGround : MonoBehaviour
 {
     public GameObject Ground;
     public float BackwardVelocity = 50f;
+    public bool stopGround = false;
     GameObject NextGround;
     float PositionZ;
     string GroundNeeded = "None";
+    float crashDeceleration = 6f;
+    
 
     void Start()
     {
@@ -15,17 +18,36 @@ public class SpawnGround : MonoBehaviour
         NextGround.GetComponent<SpawnGround>().enabled = false;
         NextGround.GetComponent<ObstacleGenerator>().enabled = false;        
     }
-    void FixedUpdate()
+    void Update()
     {
+
+       // Gradual slowdown when crashing
+        if (stopGround)
+        {
+            BackwardVelocity = Mathf.Lerp(
+                BackwardVelocity,
+                0f,
+                crashDeceleration * Time.deltaTime
+            );
+
+            if (BackwardVelocity < 0.1f)
+                BackwardVelocity = 0f;
+        }
+
+        if (BackwardVelocity <= 0f)
+            return;
+
+
+
        // Move both ground pieces backward
        if(Ground.transform.position.z < NextGround.transform.position.z)
        {
-           Ground.GetComponent<Rigidbody>().MovePosition(Ground.transform.position + new UnityEngine.Vector3(0, 0, -BackwardVelocity*Time.fixedDeltaTime));
+           Ground.GetComponent<Rigidbody>().MovePosition(Ground.transform.position + new UnityEngine.Vector3(0, 0, -BackwardVelocity*Time.deltaTime));
            NextGround.GetComponent<Rigidbody>().MovePosition(Ground.GetComponent<Rigidbody>().position + new Vector3(0, 0, Ground.GetComponent<Transform>().localScale.z + 30));
        }
        if(NextGround.transform.position.z < Ground.transform.position.z)
        {
-           NextGround.GetComponent<Rigidbody>().MovePosition(NextGround.transform.position + new UnityEngine.Vector3(0, 0, -BackwardVelocity*Time.fixedDeltaTime));
+           NextGround.GetComponent<Rigidbody>().MovePosition(NextGround.transform.position + new UnityEngine.Vector3(0, 0, -BackwardVelocity*Time.deltaTime));
            Ground.GetComponent<Rigidbody>().MovePosition(NextGround.GetComponent<Rigidbody>().position + new Vector3(0, 0, Ground.GetComponent<Transform>().localScale.z + 30));
        }
        
@@ -51,6 +73,7 @@ public class SpawnGround : MonoBehaviour
                 PositionZ = Ground.transform.position.z + NextGround.GetComponent<Renderer>().transform.localScale.z;
                 NextGround.GetComponent<Rigidbody>().MovePosition(new UnityEngine.Vector3(0, 0, PositionZ));
             }
+
         }
     }
 }
